@@ -1,0 +1,286 @@
+* {
+   /* background-color: rgba(0,0,0,.1);*/
+   box-sizing: border-box;
+    font-size: 12px;
+    transition: 0.1s;
+}
+body {
+    background-color: #00334b;
+    font-family: "Segoe UI","微軟正黑體",sans-serif;
+}
+.container {
+    position: relative;
+    width: 60%;
+    margin: 40px auto
+}
+
+.title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #eee;
+    line-height: 18px;
+}
+
+/**********提醒時間區**********/
+.notice{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: rgb(218, 185, 0);
+    line-height: 20px;
+    text-align: center;
+}
+.notice:hover{
+    background-color: rgb(238, 205, 20);
+    cursor: pointer;
+}
+/**********增加項目區**********/
+.add-task {
+    font-size: 0px;/*讓換行間距為0*/
+}
+.add-task input {
+    font-size: 12px;/*回復原字體大小*/
+    width: 85%;
+    height: 26px;
+    border-radius: 3px;
+    margin: 0px 1% 1% 0px;
+    padding: 0px 10px;
+    background-color: #eee;
+    border: 1.5px solid #ccc;
+}
+.add-task input:focus, .add-task input:hover {
+    background-color: #fff;
+}
+
+.add-task button {
+    font-size: 12px;/*回復原字體大小*/
+    width: 14%;
+    height: 26px;
+    border-radius: 3px;
+    background-color: rgb(33, 148, 214);
+    border: none;
+    color: #222;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow : hidden;
+}
+.add-task button:hover {
+    background-color: rgb(63,178,244);
+}
+
+/**********項目內容區**********/
+.task-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+.task-item {
+    height: 26px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 3.5px;
+    padding: 0px 10px;
+    line-height: 26px; /*讓內容上下居中*/
+    display: flex;
+    flex-direction: row;
+}
+.task-item:hover {
+    background-color: #eee;
+}
+
+.task-item.checked.task-item {
+    order: 1;
+    color: #555;
+    background-color: gray;
+}
+.task-item.checked.task-item .task-content::after {
+    content: "";
+    display: block;
+    position: relative;
+    bottom: 13px;
+    left: 18px;
+    height: 1px;
+    background: #aaa;
+    width: 93%;
+    z-index: 1;
+}
+.task-item input{
+    margin-right: 8px;
+}
+.task-item .task-content {
+   /* display: inline-block;*/
+    flex-grow: 1;/*讓文字部分幾乎占滿*/
+
+}
+
+.task-item .task-info, .task-item .delete{
+    display: block;
+    color: #999;
+    padding: 0px 2px;
+}
+.task-item .task-info:hover, .task-item .delete:hover{
+    cursor: pointer;
+    color: #333
+}
+/**********項目詳情區**********/
+.task-detail-mask {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 1;/*開啟堆疊上下文*/
+}
+.task-detail {
+    position: absolute;
+    display: none;
+    right: 15%;
+    top: 86px;
+    width: 45%;
+    height: 250px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: #eee;
+    padding: 5px;
+    overflow: auto;
+}
+
+.task-detail .task-title input {
+    width: 100%;
+    border-radius: 3px;
+    background-color: #eee;
+    border-width: 0px;
+    margin-bottom: 5px;
+    outline: none;
+}
+.task-detail .task-title input:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+.task-detail .task-title input:focus {
+    width: 100%;
+    background-color: #ddd;
+    border-color: #fff;
+    border-width: 2px 0px 0px 2px;
+    margin-bottom: 5px;
+    cursor: initial;
+}
+
+.task-detail .task-title {
+    margin: 10px auto;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+.task-detail textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 3px;
+    background-color: #ccc;
+    resize: vertical;
+    
+    border-width: 2px 0px 0px 2px;
+    margin-bottom: 10px;
+    outline: none;
+
+}
+.task-detail textarea:hover {
+    background-color: #ddd;
+}
+.task-detail .remind p {
+    font-weight: bold;
+    margin: 0px;
+    color: #333
+}
+.task-detail .remind input {
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 3px;
+    border-color: #fff;
+    border-width: 2px 0px 0px 2px;
+    margin: 10px 0px;
+    outline: none;
+}
+.task-detail .remind input:hover {
+    background-color: #ddd;
+}
+.task-detail .remind button {
+    background-color: rgb(33, 148, 214);
+    width: 50px;
+    height: 20px;;
+    font-size: 12px;
+    border-radius: 3px;
+    border-width: 0px 2px 2px 0px;
+    border-color: rgb(23, 138, 204);
+    color: #222;
+    font-weight: bold;
+}
+.task-detail .remind button:hover {
+    background-color: rgb(63, 178, 244);
+
+}
+/**********確認刪除框**********/
+.alert-delete-mask{
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.2);
+    display: none;
+}
+.alert-delete{
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-left: -110px;
+    margin-top: -70px;
+    width:220px;
+    height: 90px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+.alert-delete .yes{
+    background-color: rgb(33, 148, 214);
+    border-color: rgb(23, 138, 204);
+}
+.alert-delete .no{
+    background-color: #aaa;
+    border-color: #999;
+   
+}
+.alert-delete .yes,
+.alert-delete .no{
+    width: 60px;
+    height: 35px;
+    color: #222;
+    border-radius: 4px;
+}
+.alert-delete .yes:hover{
+    background-color: rgb(53, 168, 234);
+    border-color: rgb(43, 158, 224);
+}
+.alert-delete .no:hover{
+    background-color: #ccc;
+    border-color: #aaa;
+}
+/**********音檔**********/
+.audio{
+    visibility: hidden;
+}

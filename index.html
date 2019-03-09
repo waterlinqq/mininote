@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW ">
+
+<head>
+    <title>我的備忘錄</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="index.html">
+    <meta name="view-port" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.min.css">
+</head>
+
+<body>
+    <!--提醒時間到 -->
+    <div class="notice"></div>
+    <!--總容器-->
+    <div class="container">
+        <!--增加項目-->
+        <div class="title">
+            <h1>我的備忘錄</h1>
+        </div>
+        <form class="add-task">
+            <input type="text" autofocus autocomplete="off" placeholder="eg. 早上學英文"><button type="submit">提交</button>
+        </form>
+        <!--清單內容-->
+        <ul class="task-list">
+
+        </ul>
+        <!--項目詳細訊息-->
+        <div class="task-detail-mask">
+            <div class="task-detail">
+                <div class="task-title"><input type="text"></div>
+                <div class="task-desc"><textarea></textarea></div>
+                <div class="remind">
+                    <p>提醒時間</p>
+                    <input class="datetime" type="text" name="" id="" value="">
+                    <button type="submit">更新</button>
+                </div>
+            </div>
+        </div>
+        <!-- 確認刪除框 -->
+        <div class="alert-delete-mask">
+            <div class="alert-delete">
+                <p class="content">確認刪除<span class="name"></span>嗎?</p>
+                <button class="yes" data-confirm="true">確認</button>
+                <button class="no" data-confirm="false">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- 鬧鐘 -->
+    <audio controls="controls" class="audio" loop="loop">
+        <source src="./mp3/Twin-bell-alarm-clock-sound.mp3">
+    </audio>
+
+
+</body>
+<script src="./js/store.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.datetimepicker.full.js"></script>
+<script src="./js/main.js"></script>
+
+</html>
