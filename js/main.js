@@ -1,6 +1,5 @@
 (function () {
     'use strict'
-    store.remove('taskList')
     var $addTask = $('.add-task'),//提交區塊div
         $input = $addTask.find('input'),//提交區塊內容input
         $taskList = $('.task-list'),//清單內容ul
@@ -143,6 +142,7 @@
         $('.task-info').on('click', function () {
             console.log('task-info Click')
             //獲取項目內容
+            console.log(this)
             var title = $(this).prev().text()
             var index = $(this).parent().data('index')
             var desc = taskList[index].desc
